@@ -1,0 +1,64 @@
+/* latin */
+@font-face {
+  font-family: 'Indie Flower';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Indie Flower'), local('IndieFlower'), url(10JVD_humAd5zP2yrFqw6ugdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'roboto_thin';
+  src: url('Roboto/Roboto-Thin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  font-family: 'roboto_light';
+  src: url('Roboto/Roboto-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'roboto';
+  src: url('Roboto/Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  font-family: 'roboto_medium';
+  src: url('Roboto/Roboto-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  font-family: 'roboto_bold';
+  src: url('Roboto/Roboto-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@font-face {
+  font-family: 'roboto_black';
+  src: url('Roboto/Roboto-Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
