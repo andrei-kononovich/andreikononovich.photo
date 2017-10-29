@@ -181,7 +181,7 @@ body {
 }
 
 .albums-list .album-item:hover::after {
-  opacity: 1;
+  opacity: .7;
 }
 
 .album-item .album-info {
@@ -215,6 +215,9 @@ body {
   height: 300px;
   background: var(--light-grey);
   font-size: 0;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center center;
 }
 
 
