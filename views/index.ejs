@@ -1,0 +1,83 @@
+<%- include('./_header'); %>
+
+    <main>
+      <section id="hero" class="hero-section">
+        <div class="hero-text-wrap">
+          <p class="hero-secondary text-center text-uppercase text-accent animated fadeInDown">photography</p>
+          <h1 class="hero-text text-center text-capitalize animated fadeInDown">My images can touch your feelings</h1>
+        </div>
+      </section>
+
+      <section id="portfolio" class="portfolio-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="filters-list">
+                <li class="filter-item active">
+                  <button data-filter="*" class="filter-link">All</button>
+                </li>
+                <li class="filter-item">
+                  <button data-filter=".wedding" class="filter-link">Weddings</button>
+                </li>
+                <li class="filter-item">
+                  <button data-filter=".holiday" class="filter-link">Holidays</button>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="albums-list clearfix">
+                <li class="album-item wedding">
+                  <a href="albums/345" class="album-link" style="background-image: url('assets/img/VvejQ65pPm0.jpg');">wedding
+                    <div class="album-info animated ">
+                      <p>Sweet dream</p>
+                    </div>
+                  </a>
+                </li>
+                <li class="album-item holiday">
+                  <a href="albums/123" class="album-link" style="background-image: url('assets/img/xMMPMGN10os.jpg');">holiday
+                    <div class="album-info">
+                      <p>Honey bunny</p>
+                    </div>
+                  </a>
+                </li>
+                <li class="album-item">
+                  <a href="albums/234" class="album-link" style="background-image: url('assets/img/d8xf2XQdo.jpg');">Album
+                    <div class="album-info">
+                      <p>Lovely pony</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="social" class="social-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+              <ul class="social-list">
+                <li class="social-item">
+                  <a href="https://www.facebook.com/andrei.i.anuta" class="social-link"><i class="fa fa-facebook-f"></i></a>
+                </li>
+                <li class="social-item">
+                  <a href="https://vk.com/zakadrom_photo" class="social-link"><i class="fa fa-vk"></i></a>
+                </li>
+                <li class="social-item">
+                  <a href="https://www.instagram.com/andrei_kononovich/" class="social-link"><i class="fa fa-instagram"></i></a>
+                </li>
+                <li class="social-item">
+                  <a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+<%- include('./_footer'); %>

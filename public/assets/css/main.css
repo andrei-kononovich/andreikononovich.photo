@@ -30,11 +30,8 @@ body {
  */
 
 .header {
-  /*position: sticky;*/
-  /*top: 0;*/
-  /*z-index: 999;*/
   background: var(--light-grey);
-  height: 100px;
+  height: 130px;
 }
 
 .logo img {
@@ -46,7 +43,6 @@ body {
  * NAV
  */
 .site-nav {
-  /*height: 100px;*/
   /*line-height: 100px;*/
 }
 
@@ -123,6 +119,10 @@ body {
   padding: 100px 0;
 }
 
+.album-name {
+  margin-bottom: 40px;
+}
+
 .filters-list {
   font-family: poppins_light, sans-serif;
   padding: 0;
@@ -164,7 +164,7 @@ body {
   display: inline-block;
   float: left;
   width: 31.5%;
-  margin: 10px;
+  margin: .9%;
 }
 
 .albums-list .album-item::after {
@@ -187,6 +187,7 @@ body {
 .album-item .album-info {
   display: none;
 }
+
 .album-item:hover .album-info {
   position: absolute;
   top: 50%;
@@ -206,7 +207,6 @@ body {
   text-align: center;
   top: 50%;
   margin-top: -20px;
-  padding: 0 20px;
 }
 
 .album-item .album-link {
@@ -218,6 +218,24 @@ body {
   -webkit-background-size: cover;
   background-size: cover;
   background-position: center center;
+}
+
+.popup-gallery {
+  list-style-type: none;
+  padding: 0;
+}
+
+.gallery-item {
+  position: relative;
+  display: inline-block;
+  float: left;
+  width: 31.5%;
+  margin: .9%;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 240px;
 }
 
 

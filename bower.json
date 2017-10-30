@@ -1,0 +1,20 @@
+{
+  "name": "andreikononovich-photo",
+  "description": "businesscard website for photographer",
+  "main": "server.js",
+  "authors": [
+    "Yauheni Sauchanka"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/andrei-kononovich/andreikononovich.photo",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0"
+  }
+}
