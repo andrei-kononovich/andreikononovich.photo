@@ -1,6 +1,7 @@
 :root {
   --black: #2b2e2f;
   --light-grey: #f7f7f7;
+  --mid-gray: #a8b0b2;
   --dark-grey: #595959;
   --text-grey: #717779;
   --accent-color: #66bfd7;
@@ -63,7 +64,7 @@ body {
   padding: 3px;
   color: var(--black);
   font-family: poppins_semibold, sans-serif;
-  transition: all .25s ease-in-out;
+  /*transition: all .25s ease-in-out;*/
 }
 
 .nav-item.active {
@@ -175,7 +176,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--dark-grey);
+  background: var(--accent-color);
   opacity: 0;
   transition: opacity .25s ease-in;
 }
@@ -266,4 +267,152 @@ body {
 
 .social-item:hover .social-link {
   color: var(--accent-color);
+}
+
+/*
+ *
+ * ABOUT ME SECTION
+ *
+ */
+#aboutme {
+  margin-top: 60px;
+  margin-bottom: 160px;
+}
+
+#aboutme h1 {
+  margin-bottom: 60px;
+}
+
+#aboutme .heading{
+
+  border-bottom: 2px solid var(--accent-color);
+}
+
+#aboutme .avatar {
+  min-width: 100%;
+}
+
+.avatar img {
+  width: 100%;
+}
+
+
+/*
+ *
+ * CONTACTS SECTION
+ *
+ */
+
+#contacts {
+  margin-top: 160px;
+  margin-bottom: 160px;
+}
+#contacts .row {
+  margin-bottom: 60px;
+}
+
+
+#contacts .secondary {
+  letter-spacing: 10px;
+  font-size: 14px;
+  color: var(--mid-gray);
+  text-transform: uppercase;
+  font-family: poppins_semibold, sans-serif;
+}
+
+#contacts .heading {
+  position: relative;
+  text-transform: capitalize;
+  font-family: poppins_semibold, sans-serif;
+  word-spacing: 7px;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+
+#contacts .heading::after {
+  position: absolute;
+  top: 80%;
+  left: 0;
+  content: '';
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: var(--accent-color);
+}
+#contacts .address p {
+  margin-bottom: 30px;
+
+}
+
+#contacts .address .city {
+  font-family: poppins_semibold, sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#contacts .address .street {
+  font-size: 20px;
+  color: var(--mid-gray);
+  margin-bottom: 30px;
+}
+
+#contacts .address .tel {
+  font-family: poppins_semibold, sans-serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+  transition: all .25s ease-in-out;
+}
+
+#contacts .address .tel a {
+  color: var(--black);
+  transition: all .25s ease-in-out;
+}
+
+#contacts .address .email a {
+  font-size: 18px;
+  color: var(--mid-gray);
+  letter-spacing: 1px;
+}
+
+#contacts .address .email a:hover,
+#contacts .address .tel a:hover {
+  color: var(--accent-color);
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+}
+
+.getintouch-form {
+  width: 100%;
+}
+
+.getintouch-form input, .getintouch-form textarea {
+  font-size: 18px;
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid var(--mid-gray);
+  outline: none;
+}
+
+.getintouch-form input:focus, .getintouch-form textarea:focus {
+  border-bottom-color: var(--accent-color);
+  color: var(--black);
+}
+.getintouch-form .submit-btn {
+  width: 100%;
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  padding: 10px;
+  transition: background .25s ease-in-out;
+}
+
+.getintouch-form .submit-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
 }

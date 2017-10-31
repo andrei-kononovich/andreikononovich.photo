@@ -23,6 +23,29 @@ $(function () {
     }
   });
 
+  const nav = $('.nav-list');
+
+  nav.on('click', 'li', function (e) {
+    $(this).addClass('active');
+    $(this).siblings().removeClass('active');
+  });
+
+  switch (window.location.pathname) {
+    case '/': {
+      $('.nav-list li.home').addClass('active');
+      break;
+    }
+    case '/aboutme': {
+      $('.nav-list li.aboutme').addClass('active');
+      break;
+    }
+    case '/contacts': {
+      $('.nav-list li.contacts').addClass('active');
+      break;
+    }
+
+  }
+
   const $grid = $('.albums-list');
   $grid.isotope({
     itemSelector: '.album-item',
