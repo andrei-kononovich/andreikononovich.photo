@@ -279,12 +279,15 @@ body {
   margin-bottom: 160px;
 }
 
-#aboutme h1 {
+#aboutme .section-title {
   margin-bottom: 60px;
 }
 
-#aboutme .heading{
+#aboutme .title {
+  margin-bottom: 30px;
+}
 
+#aboutme .heading{
   border-bottom: 2px solid var(--accent-color);
 }
 
