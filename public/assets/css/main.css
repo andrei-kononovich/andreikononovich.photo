@@ -391,7 +391,7 @@ body {
   width: 100%;
 }
 
-.getintouch-form input, .getintouch-form textarea {
+.getintouch-form input, .getintouch-form textarea, .register-form input {
   font-size: 18px;
   width: 100%;
   padding: 5px;
@@ -400,11 +400,11 @@ body {
   outline: none;
 }
 
-.getintouch-form input:focus, .getintouch-form textarea:focus {
+.getintouch-form input:focus, .getintouch-form textarea:focus, .register-form input:focus {
   border-bottom-color: var(--accent-color);
   color: var(--black);
 }
-.getintouch-form .submit-btn {
+.getintouch-form .submit-btn, .register-form .submit-btn {
   width: 100%;
   background: transparent;
   border: 2px solid var(--accent-color);
@@ -415,7 +415,31 @@ body {
   transition: background .25s ease-in-out;
 }
 
-.getintouch-form .submit-btn:hover {
+.getintouch-form .submit-btn:hover, .register-form .submit-btn:hover {
   background: var(--accent-color);
   color: #fff;
+}
+
+#register, #login {
+  margin-top: 60px;
+}
+
+
+#register .heading {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+#register .heading::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--accent-color);
+  position: absolute;
+  top: 130%;
+}
+
+.register-form {
+  margin-bottom: 200px;
 }

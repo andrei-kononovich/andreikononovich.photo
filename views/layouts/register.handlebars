@@ -1,47 +1,49 @@
 <main>
-  <div class="container">
-    {{#if errors}}
-      {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>
-      {{/each}}
-    {{/if}}
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Register</h1>
+  <section id="register">
+    <div class="container">
+      {{#if errors}}
+        {{#each errors}}
+          <div class="alert alert-danger">{{msg}}</div>
+        {{/each}}
+      {{/if}}
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="heading">Register</h1>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <form action="/register" method="post" class="form-group">
-          <div class="row">
-            <div class="col-md-4">
-              <input type="text" name="name" class="form-control" placeholder="Name">
+      <div class="row">
+        <div class="col-md-12">
+          <form action="/register" method="post" class="register-form">
+            <div class="row">
+              <div class="col-md-4">
+                <input type="text" name="name" class="input" placeholder="Name">
+              </div>
+              <div class="col-md-4">
+                <input type="text" name="username"  class="input" placeholder="Username">
+              </div>
+              <div class="col-md-4">
+                <input type="email" name="email"  class="input" placeholder="Email">
+              </div>
             </div>
-            <div class="col-md-4">
-              <input type="text" name="username"  class="form-control" placeholder="Username">
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="password" name="password"  class="input" placeholder="Password">
+              </div>
+              <div class="col-md-6">
+                <input type="password" name="confirmPassword"  class="input" placeholder="Confirm password">
+              </div>
             </div>
-            <div class="col-md-4">
-              <input type="email" name="email"  class="form-control" placeholder="Email">
+            <br>
+            <div class="row">
+              <div class="col-md-2 col-md-offset-10">
+                <button type="submit" class="submit-btn">Register</button>
+              </div>
             </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-6">
-              <input type="password" name="password"  class="form-control" placeholder="Password">
-            </div>
-            <div class="col-md-6">
-              <input type="password" name="confirmPassword"  class="form-control" placeholder="Confirm password">
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-2 col-md-offset-10">
-              <button type="submit" class="btn btn-block btn-success">Register</button>
-            </div>
-          </div>
 
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </main>
