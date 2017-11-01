@@ -30,20 +30,11 @@ $(function () {
     $(this).siblings().removeClass('active');
   });
 
-  switch (window.location.pathname) {
-    case '/': {
-      $('.nav-list li.home').addClass('active');
-      break;
-    }
-    case '/aboutme': {
-      $('.nav-list li.aboutme').addClass('active');
-      break;
-    }
-    case '/contacts': {
-      $('.nav-list li.contacts').addClass('active');
-      break;
-    }
-
+  const route = window.location.pathname.substr(1);
+  if (window.location.pathname === '/') {
+    $('.nav-list li.home').addClass('active');
+  } else {
+    $('.nav-list li.' + route).addClass('active');
   }
 
   const $grid = $('.albums-list');

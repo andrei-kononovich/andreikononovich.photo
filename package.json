@@ -4,7 +4,11 @@
   "description": "businesscard website for photographer",
   "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start": "nodemon server",
+    "mongo-server": "C:/\"Program Files\"/MongoDB/Server/3.2/bin/mongod.exe --dbpath c:/mongodb/data --storageEngine=mmapv1",
+    "mongo": "C:/\"Program Files\"/MongoDB/Server/3.2/bin/mongo.exe",
+    "mongo-server64": "C:/\"Program Files\"/MongoDB/Server/3.4/bin/mongod.exe --dbpath c:/mongodb/data",
+    "mongo64": "C:/\"Program Files\"/MongoDB/Server/3.4/bin/mongo.exe"
   },
   "repository": {
     "type": "git",
@@ -18,17 +22,29 @@
   },
   "dependencies": {
     "animate.css": "^3.5.2",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
     "bootstrap": "^3.3.7",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
     "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.15.6",
+    "express-validator": "^4.3.0",
     "font-awesome": "^4.7.0",
     "http-server": "^0.9.0",
     "isotope-layout": "^3.0.4",
     "jquery": "^3.1.1",
     "magnific-popup": "^1.1.0",
+    "mongodb": "^2.2.33",
+    "mongoose": "^4.12.5",
     "multer": "^1.3.0",
     "nodemon": "^1.12.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "swiper": "^3.4.1"
   },
   "homepage": "https://github.com/evgeny-sav/andreikononovich-photo#readme"
