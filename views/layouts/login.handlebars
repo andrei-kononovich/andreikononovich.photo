@@ -1,34 +1,36 @@
 <main>
-  <div class="container">
-    {{#if errors}}
-      {{#each errors}}
-        <div class="alert alert-danger">{{msg}}</div>
-      {{/each}}
-    {{/if}}
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Login</h1>
+  <section id="login">
+    <div class="container">
+      {{#if errors}}
+        {{#each errors}}
+          <div class="alert alert-danger">{{msg}}</div>
+        {{/each}}
+      {{/if}}
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="heading">Login</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form action="/login" method="post" class="login-form">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" name="username" placeholder="Username">
+              </div>
+              <div class="col-md-6">
+                <input type="password" name="password" placeholder="Password">
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-2 col-md-offset-10">
+                <button type="submit" class="submit-btn">Login</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <form action="/login" method="post" class="form-group">
-          <div class="row">
-            <div class="col-md-6">
-              <input type="text" name="username" class="form-control" placeholder="Username">
-            </div>
-            <div class="col-md-6">
-              <input type="password" name="password" class="form-control" placeholder="Password">
-            </div>
-          </div>
-          <br>
-          <div class="row">
-            <div class="col-md-2 col-md-offset-10">
-              <button type="submit" class="btn btn-block btn-success">Login</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  </section>
 </main>

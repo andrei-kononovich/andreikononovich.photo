@@ -387,11 +387,11 @@ body {
   height: 500px;
 }
 
-.getintouch-form {
+.getintouch-form, .register-form, .login-form {
   width: 100%;
 }
 
-.getintouch-form input, .getintouch-form textarea, .register-form input {
+.getintouch-form input, .getintouch-form textarea, .register-form input, .login-form input {
   font-size: 18px;
   width: 100%;
   padding: 5px;
@@ -400,11 +400,11 @@ body {
   outline: none;
 }
 
-.getintouch-form input:focus, .getintouch-form textarea:focus, .register-form input:focus {
+.getintouch-form input:focus, .getintouch-form textarea:focus, .register-form input:focus, .login-form input:focus {
   border-bottom-color: var(--accent-color);
   color: var(--black);
 }
-.getintouch-form .submit-btn, .register-form .submit-btn {
+.getintouch-form .submit-btn, .register-form .submit-btn, .login-form .submit-btn {
   width: 100%;
   background: transparent;
   border: 2px solid var(--accent-color);
@@ -415,7 +415,7 @@ body {
   transition: background .25s ease-in-out;
 }
 
-.getintouch-form .submit-btn:hover, .register-form .submit-btn:hover {
+.getintouch-form .submit-btn:hover, .register-form .submit-btn:hover, .login-form .submit-btn:hover {
   background: var(--accent-color);
   color: #fff;
 }
@@ -425,12 +425,12 @@ body {
 }
 
 
-#register .heading {
+#register .heading, #login .heading {
   margin-bottom: 60px;
   position: relative;
 }
 
-#register .heading::after {
+#register .heading::after, #login .heading::after {
   content: '';
   display: block;
   width: 40px;
@@ -440,6 +440,6 @@ body {
   top: 130%;
 }
 
-.register-form {
+.register-form, .login-form {
   margin-bottom: 200px;
 }
