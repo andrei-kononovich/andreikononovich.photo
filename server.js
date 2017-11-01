@@ -162,7 +162,7 @@ app.post('/register', (req, res) => {
 app.get('/login', (req, res) => res.render('login'));
 app.post('/login', passport.authenticate('local', { successRedirect: '/dashboard', failureRedirect: '/login', failureFlash: true, successFlash: true }));
 
-app.get('/logout', (req, res) => {
+app.get('/logout', ensureAuthenticated, (req, res) => {
   req.logout();
   req.flash('success_msg', 'You\'re logged out');
   res.redirect('/login');
