@@ -404,6 +404,12 @@ body {
   border-bottom-color: var(--accent-color);
   color: var(--black);
 }
+
+/*
+ *
+ * BUTTONS
+ *
+ */
 .getintouch-form .submit-btn, .register-form .submit-btn, .login-form .submit-btn {
   width: 100%;
   background: transparent;
@@ -425,12 +431,12 @@ body {
 }
 
 
-#register .heading, #login .heading {
+#register .heading, #login .heading, #dashboard .heading, #addAlbum .heading  {
   margin-bottom: 60px;
   position: relative;
 }
 
-#register .heading::after, #login .heading::after {
+#register .heading::after, #login .heading::after, #dashboard .heading::after, #addAlbum .heading::after {
   content: '';
   display: block;
   width: 40px;
@@ -443,3 +449,140 @@ body {
 .register-form, .login-form {
   margin-bottom: 200px;
 }
+
+
+#dashboard {
+  margin-top: 60px;
+  margin-bottom: 200px;
+}
+
+#dashboard .action-btns {
+  margin-bottom: 40px;
+}
+
+#dashboard .action-btn {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: var(--black);
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  padding: 10px;
+  transition: background .25s ease-in-out;
+}
+
+#dashboard .action-btn:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.albums-table a {
+  color: var(--black);
+}
+
+.albums-table th.actions {
+  text-align: center;
+}
+
+.albums-table td.actions {
+  text-align: center;
+}
+
+.albums-table .actions a {
+  display: inline-block;
+  min-width: 100px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--black);
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  padding: 5px 20px;
+  margin: 0 10px;
+  transition: background .25s ease-in-out;
+}
+
+.albums-table .actions  a:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+
+#addAlbum {
+  margin-top: 60px;
+  margin-bottom: 200px;
+}
+
+.add-images-form {
+  margin-bottom: 60px;
+}
+
+.add-images-form .album-name {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--black);
+  padding: 5px;
+  font-size: 18px;
+  outline: none;
+  transition: all .25s ease-in-out;
+}
+
+.add-images-form .album-name:focus {
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.add-images-form label[for="fileinput"] {
+  font-family: poppins_light, sans-serif;
+  width: 100%;
+  height: 30px;
+  display: inline-block;
+}
+
+.add-images-form #fileinput {
+  width: 100%;
+  font-family: poppins_light, sans-serif;
+  padding: 5px;
+  position: relative;
+  outline: none;
+}
+
+.add-images-form #fileinput::after {
+  content: 'Choose files';
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 143px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid var(--accent-color);
+  cursor: pointer;
+}
+
+.add-images-form .submit-btn {
+  width: 100%;
+  border: 2px solid var(--accent-color);
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  background: transparent;
+  padding: 10px;
+  transition: all .25s ease-in-out;
+}
+
+.add-images-form .submit-btn:hover {
+  color: #fff;
+  background: var(--accent-color);
+}
+
+.image-loaded {
+  display: inline-block;
+  margin: 5px;
+}
+

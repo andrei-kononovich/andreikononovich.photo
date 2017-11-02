@@ -10,6 +10,9 @@ const exphbs  = require('express-handlebars');
 const path = require('path');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
+const moment = require('moment');
+
+const Album = require('./models/album');
 
 const dbconfig = require('./config/database');
 const passportConfig = require('./config/passport');
@@ -20,6 +23,36 @@ const db = mongoose.connection;
 // check connection anf for errors
 db.once('open', () => console.log('Connected to MongoDB'));
 db.on('error', (err) => console.log(err));
+
+
+const storage = multer.diskStorage({
+  destination: './public/uploads',
+  filename: (req, file, cb) => {
+    cb(null, `${file.fieldname}-${Date.now()}-${Math.round(Math.random() * 10000)}${path.extname(file.originalname)}`);
+  }
+});
+
+const upload = multer({
+  storage,
+  limits: {
+    // fileSize: 10
+  },
+  fileFilter: (req, file, cb) => {
+    checkFileType(file, cb);
+  },
+}).array('images', 30);
+
+function checkFileType(file, cb) {
+  const allowedFileExt = /jpg|jpeg|png|gif/;
+  const extname = allowedFileExt.test(path.extname(file.originalname).toLowerCase());
+  const mimeType = allowedFileExt.test(file.mimetype);
+
+  if (extname && mimeType) {
+    return cb(null, true);
+  } else {
+    cb('Error: Images Only!');
+  }
+}
 
 // Init App
 const app = express();
@@ -94,11 +127,48 @@ app.use(function (req, res, next) {
 const usersRouter = require('./routes/users');
 app.use('/users', usersRouter);
 
-app.get('/', (req, res) => res.render('index'));
+app.get('/', (req, res) => {
+  Album.find({}, (err, albums) => {
+    if (err) {
+      req.flash('error_msg', 'Can not find album!');
+      res.redirect('/');
+    }
+    res.render('index', {
+      albums,
+    });
+  });
+});
 app.get('/aboutme', (req, res) => res.render('aboutme'));
 app.get('/contacts', (req, res) => res.render('contacts'));
-app.get('/albums/:id', (req, res) => res.render('album'));
-app.get('/dashboard', ensureAuthenticated, (req, res) => res.render('dashboard'));
+app.get('/albums/:id', (req, res) => {
+  const ObjectId = require('mongoose').Types.ObjectId;
+  if(ObjectId.isValid(req.params.id)) {
+    Album.findById(req.params.id, (err, album) => {
+      if (err) {
+        req.flash('error_msg', 'Can not find album!');
+        next(err);
+      }
+
+      res.render('album', {
+        album,
+        name: album.name,
+        images: album.files
+      });
+    });
+  } else {
+    res.redirect('/');
+  }
+
+
+});
+app.get('/dashboard', ensureAuthenticated, (req, res) => {
+  Album.find({}, (err, albums) => {
+    res.render('dashboard', {
+      albums,
+    })
+  });
+
+});
 
 app.get('/register', (req, res) => res.render('register'));
 app.post('/register', (req, res) => {
@@ -132,8 +202,6 @@ app.post('/register', (req, res) => {
         password
       });
 
-      console.log('New User: ', newUser);
-
       bcrypt.genSalt(10, (err, salt) => {
         if (err) {
           throw err;
@@ -166,6 +234,42 @@ app.get('/logout', ensureAuthenticated, (req, res) => {
   req.logout();
   req.flash('success_msg', 'You\'re logged out');
   res.redirect('/login');
+});
+
+app.get('/add-album', ensureAuthenticated, (req, res) => res.render('addAlbum'));
+
+app.post('/add-album', ensureAuthenticated, (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      res.render('addAlbum', {
+        error: err
+      });
+    } else {
+      if (req.files === undefined) {
+        res.render('addAlbum', {
+          error: 'Error: No file selected!'
+        })
+      } else {
+        const newAlbum = new Album({
+          name: req.body.albumname,
+          category: req.body.category,
+          cover: req.files[0].filename,
+          files: req.files,
+          createdAt: moment(Date.now()).format('DD/MM/YYYY')
+        });
+        newAlbum.save((err) => {
+          if (err) {
+            console.log('Can\'t safe album');
+            throw err;
+          }
+
+          req.flash('success_msg', 'Album added!');
+          res.redirect('/dashboard');
+        });
+      }
+    }
+
+  });
 });
 
 // Handle 404

@@ -26,6 +26,19 @@
       <div class="row">
         <div class="col-md-12">
           <ul class="albums-list clearfix">
+            {{#if albums}}
+              {{#each albums}}
+                <li class="album-item {{category}}">
+                  <a href="albums/{{_id}}" class="album-link" style="background-image: url('/uploads/{{cover}}');">{{category}}
+                    <div class="album-info animated ">
+                      <p>{{name}}</p>
+                    </div>
+                  </a>
+                </li>
+              {{/each}}
+            {{/if}}
+
+
             <li class="album-item wedding">
               <a href="albums/345" class="album-link" style="background-image: url('assets/img/VvejQ65pPm0.jpg');">wedding
                 <div class="album-info animated ">
