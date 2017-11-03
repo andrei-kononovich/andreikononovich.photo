@@ -158,9 +158,37 @@ app.get('/albums/:id', (req, res) => {
   } else {
     res.redirect('/');
   }
-
-
 });
+
+app.del('/albums/:id', (req, res) => {
+  const ObjectId = require('mongoose').Types.ObjectId;
+  if (ObjectId.isValid(req.params.id)) {
+    const query = { _id: req.params.id };
+    Album.findById(req.params.id, (err, album) => {
+      if (err) {
+        throw err;
+      }
+      if (!album) {
+        req.flash('error_msg', 'No album!');
+        res.status(404).end('No album!');
+      }
+
+      if (album._id.toString() === req.params.id) {
+        Album.remove(query, (err) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          req.flash('success_msg', 'Album deleted');
+          res.send('Success');
+        });
+      } else {
+        res.status(500).end('Can\'t delete!')
+      }
+    });
+  }
+});
+
 app.get('/dashboard', ensureAuthenticated, (req, res) => {
   Album.find({}, (err, albums) => {
     res.render('dashboard', {
@@ -245,27 +273,37 @@ app.post('/add-album', ensureAuthenticated, (req, res) => {
         error: err
       });
     } else {
-      if (req.files === undefined) {
+      if ( req.files.length <= 0 ) {
         res.render('addAlbum', {
           error: 'Error: No file selected!'
         })
       } else {
-        const newAlbum = new Album({
-          name: req.body.albumname,
-          category: req.body.category,
-          cover: req.files[0].filename,
-          files: req.files,
-          createdAt: moment(Date.now()).format('DD/MM/YYYY')
-        });
-        newAlbum.save((err) => {
-          if (err) {
-            console.log('Can\'t safe album');
-            throw err;
-          }
+        req.checkBody('albumname', 'Album name is required').notEmpty();
+        req.checkBody('category', 'Album category is required').notEmpty();
 
-          req.flash('success_msg', 'Album added!');
-          res.redirect('/dashboard');
-        });
+        const errors = req.validationErrors();
+        if (errors) {
+          res.render('addAlbum', {
+            errors
+          });
+        } else {
+          const newAlbum = new Album({
+            name: req.body.albumname,
+            category: req.body.category,
+            cover: req.files[0].filename,
+            files: req.files,
+            createdAt: moment(Date.now()).format('DD/MM/YYYY')
+          });
+          newAlbum.save((err) => {
+            if (err) {
+              console.log('Can\'t safe album');
+              throw err;
+            }
+
+            req.flash('success_msg', 'Album added!');
+            res.redirect('/dashboard');
+          });
+        }
       }
     }
 

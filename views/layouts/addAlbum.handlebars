@@ -1,6 +1,11 @@
 <main>
   <section id="addAlbum">
     <div class="container">
+      {{#if errors}}
+        {{#each errors}}
+          <div class="alert alert-danger">{{msg}}</div>
+        {{/each}}
+      {{/if}}
       <div class="row">
         <div class="col-md-12">
           <h1 class="heading">Add album</h1>

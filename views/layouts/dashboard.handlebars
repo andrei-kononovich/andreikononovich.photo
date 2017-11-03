@@ -38,14 +38,32 @@
                   </td>
                   <td>{{createdAt}}</td>
                   <td class="actions">
-                    <a href="/edit-album/{{_id}}">Edit</a>
-                    <a href="/delete-album/{{_id}}">Delete</a>
+                    <a href="/albums/{{_id}}" style="display: none;">Edit</a>
+                    <a href="/albums/{{_id}}" id="deleteAlbumBtn">Delete</a>
                   </td>
                 </tr>
               {{/each}}
             {{/if}}
             </tbody>
           </table>
+          <script>
+            $(function () {
+              const deleteAlbumBtn = $('#deleteAlbumBtn');
+
+              deleteAlbumBtn.on('click', (e) => {
+                e.preventDefault();
+                console.dir(e.target.pathname);
+                $.ajax({
+                  method: 'DELETE',
+                  url: e.target.pathname
+                }).done(() => {
+                    window.location.href = '/dashboard';
+                  }).fail(err => {
+                  console.log('ERROR: ' + JSON.stringify(err.message));
+                });
+              })
+            });
+          </script>
         </div>
       </div>
     </div>
