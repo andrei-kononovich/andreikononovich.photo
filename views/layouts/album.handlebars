@@ -7,7 +7,7 @@
             <h1 class="album-name text-center">{{name}}</h1>
             {{#each images}}
               <div class="popup-gallery">
-                <a href="/uploads/{{filename}}" class="gallery-item" title=""><img src="/uploads/{{filename}}" alt="Photo"></a>
+                <a href="/uploads/{{filename}}" class="gallery-item" title="Image" style="background: url('/uploads/{{filename}}') center center; background-size: cover;"></a>
               </div>
             {{/each}}
           {{/if}}
