@@ -19,7 +19,13 @@
                 <input type="text" name="albumname" class="album-name" placeholder="Album name">
               </div>
               <div class="col-md-6">
-                <input type="text" name="category" class="album-name" placeholder="Album category">
+                <select name="category" class="album-name" id="album-name">
+                  <option value="" disabled selected>Select album category</option>
+                  <option value="all">All</option>
+                  <option value="wedding">Wedding</option>
+                  <option value="portraits">Portraits</option>
+                  <option value="lovestory">Love Story</option>
+                </select>
               </div>
             </div>
             <div class="row">

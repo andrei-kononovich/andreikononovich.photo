@@ -289,11 +289,12 @@ app.post('/add-album', ensureAuthenticated, (req, res) => {
         } else {
           const newAlbum = new Album({
             name: req.body.albumname,
-            category: req.body.category,
+            category: req.body.category.toLowerCase(),
             cover: req.files[0].filename,
             files: req.files,
             createdAt: moment(Date.now()).format('DD/MM/YYYY')
           });
+          console.log(req.body.category);
           newAlbum.save((err) => {
             if (err) {
               console.log('Can\'t safe album');
