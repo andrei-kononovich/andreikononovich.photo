@@ -1,9 +1,9 @@
 <main>
-  <section id="dashboard">
+  <section id="categories">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="heading">Dashboard</h1>
+          <h1 class="heading">Categories</h1>
         </div>
       </div>
       <div class="row">
@@ -11,7 +11,7 @@
           <div class="action-btns">
             <div class="row">
               <div class="col-md-2">
-                <a href="/add-album" class="action-btn">+ Add album</a>
+                <a href="/add-category" class="action-btn">+ Add category</a>
               </div>
             </div>
           </div>
@@ -21,27 +21,23 @@
         <div class="col-md-12">
           <table class="table table-hover albums-table">
             <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Created</th>
-                <th class="actions">Actions</th>
-              </tr>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th class="actions">Actions</th>
+            </tr>
             </thead>
             <tbody>
-            {{#if albums}}
-              {{#each albums}}
+            {{#if categories}}
+              {{#each categories}}
                 <tr>
                   <th scope="row"></th>
                   <td>
-                    <a href="/albums/{{_id}}">{{name}}</a>
+                    {{name}}
                   </td>
-                  <td>{{category}}</td>
-                  <td>{{createdAt}}</td>
                   <td class="actions">
-                    <a href="/albums/{{_id}}" style="display: none;">Edit</a>
-                    <a href="/albums/{{_id}}" class="deleteAlbumBtn">Delete</a>
+                    <a href="/categories/{{_id}}" style="display: none;">Edit</a>
+                    <a href="/categories/{{_id}}" class="deleteCategoryBtn">Delete</a>
                   </td>
                 </tr>
               {{/each}}
@@ -50,17 +46,18 @@
           </table>
           <script>
             $(function () {
-              const deleteAlbumBtn = $('.deleteAlbumBtn');
+              const deleteCategoryBtn = $('.deleteCategoryBtn');
 
-              deleteAlbumBtn.on('click', (e) => {
+              deleteCategoryBtn.on('click', (e) => {
+                console.log(this);
                 e.preventDefault();
                 console.dir(e.target.pathname);
                 $.ajax({
                   method: 'DELETE',
                   url: e.target.pathname
                 }).done(() => {
-                    window.location.href = '/dashboard';
-                  }).fail(err => {
+                  window.location.href = '/categories';
+                }).fail(err => {
                   console.log('ERROR: ' + JSON.stringify(err.message));
                 });
               })
@@ -68,6 +65,7 @@
           </script>
         </div>
       </div>
+
     </div>
   </section>
 </main>

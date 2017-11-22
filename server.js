@@ -13,6 +13,7 @@ const flash = require('connect-flash');
 const moment = require('moment');
 
 const Album = require('./models/album');
+const Category = require('./models/category');
 
 const dbconfig = require('./config/database');
 const passportConfig = require('./config/passport');
@@ -133,13 +134,23 @@ app.get('/', (req, res) => {
       req.flash('error_msg', 'Can not find album!');
       res.redirect('/');
     }
-    res.render('index', {
-      albums,
+    Category.find({}, (err, categories) => {
+      if (err) {
+        req.flash('error_msg', 'Can not find category!');
+        res.redirect('/');
+      }
+      res.render('index', {
+        albums,
+        categories
+      });
     });
   });
 });
+
 app.get('/aboutme', (req, res) => res.render('aboutme'));
+
 app.get('/contacts', (req, res) => res.render('contacts'));
+
 app.get('/albums/:id', (req, res) => {
   const ObjectId = require('mongoose').Types.ObjectId;
   if(ObjectId.isValid(req.params.id)) {
@@ -159,7 +170,6 @@ app.get('/albums/:id', (req, res) => {
     res.redirect('/');
   }
 });
-
 app.del('/albums/:id', (req, res) => {
   const ObjectId = require('mongoose').Types.ObjectId;
   if (ObjectId.isValid(req.params.id)) {
@@ -264,8 +274,78 @@ app.get('/logout', ensureAuthenticated, (req, res) => {
   res.redirect('/login');
 });
 
-app.get('/add-album', ensureAuthenticated, (req, res) => res.render('addAlbum'));
+app.get('/add-category', ensureAuthenticated, (req, res) => {
+  res.render('addCategory');
+});
+app.post('/add-category', ensureAuthenticated, (req, res) => {
+  req.checkBody('catname', 'Category name is required').notEmpty();
 
+  const errors = req.validationErrors();
+  if (errors) {
+    res.render('addCategory', {
+      errors
+    });
+  } else {
+    const tag = req.body.catname.split(' ').join('').toLowerCase();
+    const newCategory = new Category({
+      name: req.body.catname,
+      tag: tag
+    });
+
+    newCategory.save((err) => {
+      if (err) {
+        console.log('Can\'t safe category');
+        throw err;
+      }
+
+      req.flash('success_msg', 'Category added!');
+      res.redirect('/categories');
+    });
+  }
+});
+
+app.get('/categories', /* ensureAuthenticated, */ (req, res) => {
+  Category.find({}, (err, categories) => {
+    res.render('categories', {
+      categories
+    });
+  });
+});
+app.del('/categories/:id', (req, res) => {
+  const ObjectId = require('mongoose').Types.ObjectId;
+  if (ObjectId.isValid(req.params.id)) {
+    const query = { _id: req.params.id };
+    Category.findById(req.params.id, (err, category) => {
+      if (err) {
+        throw err;
+      }
+      if (!category) {
+        req.flash('error_msg', 'No category!');
+        res.status(404).end('No category!');
+      }
+
+      if (category._id.toString() === req.params.id) {
+        Category.remove(query, (err) => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          req.flash('success_msg', 'Category deleted');
+          res.send('Success');
+        });
+      } else {
+        res.status(500).end('Can\'t delete!')
+      }
+    });
+  }
+});
+
+app.get('/add-album', ensureAuthenticated, (req, res) => {
+  Category.find({}, (err, categories) => {
+    res.render('addAlbum', { categories });
+  });
+
+});
 app.post('/add-album', ensureAuthenticated, (req, res) => {
   upload(req, res, (err) => {
     if (err) {

@@ -14,16 +14,13 @@
             <li class="filter-item active">
               <button data-filter="*" class="filter-link">All</button>
             </li>
-            <li class="filter-item">
-              <button data-filter=".wedding" class="filter-link">Weddings</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter=".portraits" class="filter-link">Portraits</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter=".lovestory" class="filter-link">Love stories</button>
-            </li>
-
+            {{#if categories}}
+              {{#each categories}}
+                <li class="filter-item">
+                  <button data-filter=".{{tag}}" class="filter-link">{{name}}</button>
+                </li>
+              {{/each}}
+            {{/if}}
           </ul>
         </div>
       </div>

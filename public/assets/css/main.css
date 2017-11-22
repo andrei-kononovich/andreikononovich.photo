@@ -432,12 +432,12 @@ body {
 }
 
 
-#register .heading, #login .heading, #dashboard .heading, #addAlbum .heading  {
+#register .heading, #login .heading, #dashboard .heading, #addAlbum .heading, #add-category .heading, #categories .heading  {
   margin-bottom: 60px;
   position: relative;
 }
 
-#register .heading::after, #login .heading::after, #dashboard .heading::after, #addAlbum .heading::after {
+#register .heading::after, #login .heading::after, #dashboard .heading::after, #addAlbum .heading::after, #add-category .heading::after, #categories .heading::after {
   content: '';
   display: block;
   width: 40px;
@@ -457,11 +457,11 @@ body {
   margin-bottom: 200px;
 }
 
-#dashboard .action-btns {
+#dashboard .action-btns, #add-category .action-btns, #categories .action-btns {
   margin-bottom: 40px;
 }
 
-#dashboard .action-btn {
+#dashboard .action-btn, #add-category .action-btn, #categories .action-btn {
   width: 100%;
   text-align: center;
   text-decoration: none;
@@ -475,7 +475,7 @@ body {
   transition: background .25s ease-in-out;
 }
 
-#dashboard .action-btn:hover {
+#dashboard .action-btn:hover, #add-category .action-btn:hover, #categories .action-btn:hover {
   background: var(--accent-color);
   color: #fff;
 }
@@ -519,11 +519,11 @@ body {
   margin-bottom: 200px;
 }
 
-.add-images-form {
+.add-images-form, .cat-form {
   margin-bottom: 60px;
 }
 
-.add-images-form .album-name {
+.add-images-form .album-name, .cat-form .cat-name {
   width: 100%;
   border: none;
   border-bottom: 1px solid var(--black);
@@ -533,7 +533,7 @@ body {
   transition: all .25s ease-in-out;
 }
 
-.add-images-form .album-name:focus {
+.add-images-form .album-name:focus, .cat-form .cat-name:focus {
   border-bottom: 1px solid var(--accent-color);
 }
 
@@ -566,7 +566,7 @@ body {
   cursor: pointer;
 }
 
-.add-images-form .submit-btn {
+.add-images-form .submit-btn, .cat-form .submit-btn {
   width: 100%;
   border: 2px solid var(--accent-color);
   -webkit-border-radius: 30px;
@@ -577,7 +577,7 @@ body {
   transition: all .25s ease-in-out;
 }
 
-.add-images-form .submit-btn:hover {
+.add-images-form .submit-btn:hover, .cat-form .submit-btn:hover {
   color: #fff;
   background: var(--accent-color);
 }
@@ -585,5 +585,10 @@ body {
 .image-loaded {
   display: inline-block;
   margin: 5px;
+}
+
+#add-category, #categories {
+  margin-top: 60px;
+  margin-bottom: 200px;
 }
 
