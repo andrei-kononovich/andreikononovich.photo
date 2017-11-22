@@ -170,7 +170,7 @@ app.get('/albums/:id', (req, res) => {
     res.redirect('/');
   }
 });
-app.del('/albums/:id', (req, res) => {
+app.del('/albums/:id', ensureAuthenticated, (req, res) => {
   const ObjectId = require('mongoose').Types.ObjectId;
   if (ObjectId.isValid(req.params.id)) {
     const query = { _id: req.params.id };
@@ -304,14 +304,14 @@ app.post('/add-category', ensureAuthenticated, (req, res) => {
   }
 });
 
-app.get('/categories', /* ensureAuthenticated, */ (req, res) => {
+app.get('/categories', ensureAuthenticated, (req, res) => {
   Category.find({}, (err, categories) => {
     res.render('categories', {
       categories
     });
   });
 });
-app.del('/categories/:id', (req, res) => {
+app.del('/categories/:id', ensureAuthenticated, (req, res) => {
   const ObjectId = require('mongoose').Types.ObjectId;
   if (ObjectId.isValid(req.params.id)) {
     const query = { _id: req.params.id };
