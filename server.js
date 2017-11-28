@@ -215,8 +215,8 @@ app.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 });
 
-app.get('/register', (req, res) => res.render('register'));
-app.post('/register', (req, res) => {
+app.get('/register', ensureAuthenticated, (req, res) => res.render('register'));
+app.post('/register', ensureAuthenticated, (req, res) => {
     const User = require('./models/user');
     const bcrypt = require('bcryptjs');
 
