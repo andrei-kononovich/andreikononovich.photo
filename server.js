@@ -203,10 +203,13 @@ app.del('/albums/:id', ensureAuthenticated, (req, res) => {
 app.get('/dashboard', ensureAuthenticated, (req, res) => {
   Album.find({}, (err, albums) => {
     Feedback.find({}, (err, feedbacks) => {
-      res.render('dashboard', {
-        albums,
-        feedbacks
-      })
+      Category.find({}, (err, categories) => {
+        res.render('dashboard', {
+          albums,
+          feedbacks,
+          categories
+        })
+      });
     })
   });
 
@@ -303,18 +306,18 @@ app.post('/add-category', ensureAuthenticated, (req, res) => {
       }
 
       req.flash('success_msg', 'Category added!');
-      res.redirect('/categories');
+      res.redirect('/dashboard');
     });
   }
 });
 
-app.get('/categories', ensureAuthenticated, (req, res) => {
-  Category.find({}, (err, categories) => {
-    res.render('categories', {
-      categories
-    });
-  });
-});
+// app.get('/categories', ensureAuthenticated, (req, res) => {
+//   Category.find({}, (err, categories) => {
+//     res.render('categories', {
+//       categories
+//     });
+//   });
+// });
 app.del('/categories/:id', ensureAuthenticated, (req, res) => {
   const ObjectId = require('mongoose').Types.ObjectId;
   if (ObjectId.isValid(req.params.id)) {
