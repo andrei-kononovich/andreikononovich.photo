@@ -31,7 +31,7 @@ body {
  */
 
 .header {
-  background: var(--light-grey);
+  background: #fff;/* var(--light-grey); */
   height: 130px;
 }
 
@@ -85,7 +85,9 @@ body {
  *
  */
 .hero-section {
-  background: var(--light-grey);
+  background: url('../img/VvejQ65pPm0.jpg') center center; /*  var(--light-grey); */
+  -webkit-background-size: cover;
+  background-size: cover;
   height: 600px;
   position: relative;
 }
@@ -96,10 +98,11 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: -50px;
+  margin-top: 50px;
 }
 
 .hero-text {
+  color: #fff;
   font-size: 50px;
   font-family: poppins_light, sans-serif;
 }
