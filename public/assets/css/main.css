@@ -482,6 +482,9 @@ body {
   background: var(--accent-color);
   color: #fff;
 }
+.albums-table {
+  margin-bottom: 150px;
+}
 
 .albums-table a {
   color: var(--black);

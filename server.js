@@ -14,6 +14,7 @@ const moment = require('moment');
 
 const Album = require('./models/album');
 const Category = require('./models/category');
+const Feedback = require('./models/feedback');
 
 const dbconfig = require('./config/database');
 const passportConfig = require('./config/passport');
@@ -201,8 +202,11 @@ app.del('/albums/:id', ensureAuthenticated, (req, res) => {
 
 app.get('/dashboard', ensureAuthenticated, (req, res) => {
   Album.find({}, (err, albums) => {
-    res.render('dashboard', {
-      albums,
+    Feedback.find({}, (err, feedbacks) => {
+      res.render('dashboard', {
+        albums,
+        feedbacks
+      })
     })
   });
 
@@ -389,6 +393,38 @@ app.post('/add-album', ensureAuthenticated, (req, res) => {
     }
 
   });
+});
+
+app.post('/getintouch', (req, res) => {
+
+  req.checkBody('name', 'Name is required').notEmpty();
+  req.checkBody('email', 'Email is required').notEmpty();
+  req.checkBody('message', 'Message is required').notEmpty();
+
+  const errors = req.validationErrors();
+  if (errors) {
+    res.render('contacts', {
+      errors
+    });
+  } else {
+
+    const newFeedback = new Feedback({
+      name: req.body.name,
+      email: req.body.email,
+      message: req.body.message,
+      createdAt: moment(Date.now()).format('DD/MM/YYYY')
+    });
+
+    newFeedback.save((err) => {
+      if (err) {
+        console.log('Can\'t safe feedback');
+        throw err;
+      }
+
+      req.flash('success_msg', 'Message has been sent!');
+      res.redirect('/');
+    });
+  }
 });
 
 // Handle 404

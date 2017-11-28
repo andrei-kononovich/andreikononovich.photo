@@ -63,15 +63,20 @@
           <h1>Leave me a message</h1>
         </div>
       </div>
+      {{#if errors}}
+        {{#each errors}}
+          <div class="alert alert-danger">{{msg}}</div>
+        {{/each}}
+      {{/if}}
       <div class="row">
         <div class="col-md-12">
           <form action="/getintouch" method="post" class="getintouch-form">
             <div class="row">
               <div class="col-md-6">
-                <input type="text" placeholder="Name">
+                <input type="text" name="name" placeholder="Name">
               </div>
               <div class="col-md-6">
-                <input type="email" placeholder="Email">
+                <input type="email" name="email" placeholder="Email">
               </div>
             </div>
             <div class="row">
