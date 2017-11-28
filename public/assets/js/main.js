@@ -48,10 +48,6 @@ $(function () {
       $('.nav-list li.' + route).addClass('active');
       break;
     }
-    case '/categories': {
-      $('.nav-list li.' + route).addClass('active');
-      break;
-    }
   }
 
   const $grid = $('.albums-list');
